@@ -1,0 +1,6 @@
+PyYAML
+python-dotenv
+
+langchain-openai
+langchain-core 
+langchain
