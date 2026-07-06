@@ -2,10 +2,11 @@ from fastmcp import FastMCP
 from okf import OKFBundle
 from os import getenv
 
-BUNDLE_PATH = getenv("BUNDLE_PATH", "/bundle")
+BUNDLE_PATH = getenv("BUNDLE_PATH")
 mcp = FastMCP("OKF MCP server")
 
-bundle = OKFBundle(BUNDLE_PATH)
+bundle_path = "./bundle"
+bundle = OKFBundle(bundle_path)
 
 
 @mcp.tool

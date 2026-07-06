@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["fastmcp", "run", "main.py:mcp", "--transport=http", "--port=8000", "--host=*"]
+CMD ["fastmcp", "run", "main.py:mcp", "--transport=http", "--port=8000", "--host=0.0.0.0"]
