@@ -2,13 +2,12 @@
 from mcp.server.fastmcp import FastMCP
 from okf import OKFBundle
 from os import getenv
-from mcp.server.transport_security import TransportSecuritySettings
 
-BUNDLE_PATH = getenv("BUNDLE_PATH")
+BUNDLE_PATH = getenv("BUNDLE_PATH", "./bundle")
+# TODO: allowed host configurable, with more secure default
 mcp = FastMCP("OKF MCP server", host="0.0.0.0")
 
-bundle_path = "./bundle"
-bundle = OKFBundle(bundle_path)
+bundle = OKFBundle(BUNDLE_PATH)
 
 
 @mcp.tool()
