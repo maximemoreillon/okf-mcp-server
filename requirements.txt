@@ -1,4 +1,5 @@
-fastmcp
+# fastmcp
+mcp==1.28.1
 PyYAML
 python-dotenv
 
