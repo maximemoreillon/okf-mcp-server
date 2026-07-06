@@ -1,5 +1,5 @@
-from langchain.agents import create_agent
 from langchain.tools import tool
+from langchain.agents import create_agent
 
 from dotenv import load_dotenv
 from okf import OKFBundle
@@ -62,10 +62,11 @@ def build_okf_tools(bundle: OKFBundle) -> list:
     ]
 
 
-def build_agent(bundle_path: str):
-    """Example wiring with LangChain's tool-calling agent + Claude.
-    Swap ChatAnthropic for any chat model that supports tool calling."""
+if __name__ == "__main__":
 
+    question = "What back-end framework should I use given I am familiar with Python?"
+
+    bundle_path = "./bundle"
     bundle = OKFBundle(bundle_path)
     tools = build_okf_tools(bundle)
 
@@ -82,17 +83,6 @@ def build_agent(bundle_path: str):
         tools=tools,
         system_prompt=system_prompt,
     )
-    return agent
 
-
-if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) < 3:
-        print('Usage: python agent.py /path/to/okf_bundle "your question"')
-        sys.exit(1)
-
-    bundle_path, question = sys.argv[1], sys.argv[2]
-    agent = build_agent(bundle_path)
     result = agent.invoke({"messages": [{"role": "user", "content": question}]})
     print(result["messages"][-1].content)

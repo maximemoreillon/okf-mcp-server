@@ -4,6 +4,7 @@ title: Tech Stack Guide
 description: Reference knowledge for choosing a web app stack
 tags: [stack, guide]
 ---
+
 This bundle captures our current thinking on frontend, backend, and
 language choices for new projects.
 
