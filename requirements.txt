@@ -1,9 +1,9 @@
+fastmcp
 PyYAML
 python-dotenv
+
 
 langchain-openai
 langchain-core 
 langchain
 langchain-mcp-adapters
-
-fastmcp

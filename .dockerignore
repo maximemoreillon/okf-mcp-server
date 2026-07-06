@@ -1,0 +1,4 @@
+bundle
+__pycache__
+.venv
+.env

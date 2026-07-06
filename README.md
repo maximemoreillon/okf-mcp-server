@@ -1,3 +1,3 @@
-# OKF
+# OKF MCP server
 
-Experimenting with OKF
+Exposes an OKF bundle via an MCP server
