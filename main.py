@@ -1,16 +1,15 @@
-# from fastmcp import FastMCP
-from mcp.server.fastmcp import FastMCP
+# from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 from okf import OKFBundle
 from os import getenv
 
 BUNDLE_PATH = getenv("BUNDLE_PATH", "./bundle")
-# TODO: allowed host configurable, with more secure default
-mcp = FastMCP("OKF MCP server", host="0.0.0.0")
+mcp = FastMCP("OKF MCP server")
 
 bundle = OKFBundle(BUNDLE_PATH)
 
 
-@mcp.tool()
+@mcp.tool
 def okf_read_concept(concept_id: str) -> str:
     c = bundle.get(concept_id)
     if not c:
@@ -18,12 +17,12 @@ def okf_read_concept(concept_id: str) -> str:
     return c.as_text()
 
 
-@mcp.tool()
+@mcp.tool
 def okf_list_concepts() -> str:
     return "\n".join(bundle.list_ids())
 
 
-@mcp.tool()
+@mcp.tool
 def okf_get_links(concept_id: str) -> str:
     neighbors = bundle.neighbors(concept_id)
     if not neighbors:
@@ -31,7 +30,7 @@ def okf_get_links(concept_id: str) -> str:
     return "\n".join(f"{n.concept_id} ({n.type}): {n.title}" for n in neighbors)
 
 
-@mcp.tool()
+@mcp.tool
 def okf_find_by_tag(tag: str) -> str:
     matches = bundle.by_tag(tag)
     if not matches:
@@ -39,7 +38,7 @@ def okf_find_by_tag(tag: str) -> str:
     return "\n".join(f"{c.concept_id} ({c.type}): {c.title}" for c in matches)
 
 
-@mcp.tool()
+@mcp.tool
 def okf_find_by_type(type_: str) -> str:
     matches = bundle.by_type(type_)
     if not matches:
